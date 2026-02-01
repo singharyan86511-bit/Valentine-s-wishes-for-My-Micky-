@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Micky ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+    margin:0;
+    font-family: Arial;
+    text-align:center;
+    background: linear-gradient(45deg,#ff6a88,#ff99ac);
+    color:white;
+    overflow-x:hidden;
+}
+
+h1{
+    margin-top:20px;
+    animation: glow 2s infinite alternate;
+}
+
+@keyframes glow{
+    from{transform:scale(1);}
+    to{transform:scale(1.08);}
+}
+
+.profile{
+    width:220px;
+    height:220px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid white;
+    box-shadow:0 0 25px pink;
+}
+
+.memory{
+    width:260px;
+    border-radius:15px;
+    box-shadow:0 0 20px white;
+}
+
+form{
+    max-width:400px;
+    margin:auto;
+    background:rgba(255,255,255,0.2);
+    padding:20px;
+    border-radius:10px;
+}
+
+input,textarea,button{
+    width:100%;
+    padding:10px;
+    margin:8px 0;
+    border:none;
+    border-radius:5px;
+}
+
+button{
+    background:#ff2e63;
+    color:white;
+    font-size:16px;
+}
+
+.heart{
+    position:fixed;
+    top:-10px;
+    animation:fall linear forwards;
+}
+
+@keyframes fall{
+    to{transform:translateY(110vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>💖 Micky, You Are My Favorite Person 💖</h1>
+
+<img src="micky.jpg" class="profile">
+
+<p>I made this just to see you smile 😊</p>
+
+<h2>Send a Sweet Wish ❤️</h2>
+
+<form id="wishForm">
+<input type="text" id="name" placeholder="Your Name" required>
+<textarea id="message" placeholder="Write something cute..." required></textarea>
+<button type="submit">Send ❤️</button>
+</form>
+
+<h2>Our Memory ❤️</h2>
+
+<img src="memory.jpg" class="memory">
+
+<ul id="wishes"></ul>
+
+<script>
+const form = document.getElementById("wishForm");
+const wishes = document.getElementById("wishes");
+
+form.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    const name=document.getElementById("name").value;
+    const msg=document.getElementById("message").value;
+
+    const li=document.createElement("li");
+    li.innerHTML="<b>"+name+"</b>: "+msg;
+    wishes.appendChild(li);
+
+    alert("Message Sent ❤️");
+    form.reset();
+});
+
+setInterval(()=>{
+    const heart=document.createElement("div");
+    heart.innerHTML="❤️";
+    heart.classList.add("heart");
+
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.fontSize=(Math.random()*20+10)+"px";
+    heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+        heart.remove();
+    },5000);
+},300);
+</script>
+
+</body>
+</html>
